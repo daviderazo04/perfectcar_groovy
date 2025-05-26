@@ -15,7 +15,6 @@ html, body{
     align-items: center;
     padding: 0 20px;
 }
-
 /* Contenedor de las listas, flex para separar */
 .lista-nav {
     display: flex;
@@ -43,6 +42,9 @@ html, body{
     text-decoration-line: none;
     color: white;
 }
+.lista-nav ul a:hover{
+    text-decoration-line: underline;
+}
 
 /* La clase .der no necesita estilos especiales porque justify-content separa automáticamente */
 .footer{
@@ -67,7 +69,6 @@ html, body{
 }
 .content {
     flex: 1;
-    padding: 2rem;
 }
 .wrapper {
     display: flex;
@@ -89,7 +90,146 @@ html, body{
 .main-text{
     align-self: center;
     margin-left: 2rem;
-    font-weight: bolder;
+    font-weight: 900;
     justify-content: center;
     font-size: 3.5rem;
+}
+.tarjetas-inicio {
+    background-color: #151018;
+    width: 100%;
+    display: flex;
+    justify-content: center;       /* Centra el contenido horizontalmente */
+    gap: 20px;                     /* Espacio entre las tarjetas */
+    padding: 40px 10%;             /* Espacio interno en los lados */
+}
+
+.tarjeta-ind-ini {
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;       /* Pone los hijos en columna */
+    justify-content: flex-end;    /* Empuja el texto hacia abajo */
+    transition: transform 0.3s ease; /* Suaviza la transición */
+    height: 25rem;
+    background-position: -10rem center;
+    justify-content: flex-end;
+    text-decoration:none
+}
+.tarjeta-ind-ini:hover {
+    transform: scale(1.03); /* Hace que crezca un 5% al pasar el cursor */
+}
+
+.tarjeta-ind-ini span {
+    color: white;
+    font-weight: bolder;
+    text-decoration-line: none;
+    font-size: 2rem;
+    border-color: white;
+    text-align: center;
+    border: solid;
+}
+.tarjetas-inicio a:hover{
+    text-decoration-line: none;
+}
+
+/*Seccion vehiculos destacados*/
+.vehiculos-destacados {
+    padding: 4rem 5%;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.vehiculos-destacados h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #222;
+    font-weight: bolder;
+}
+
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.vehiculos-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+    scrollbar-width: none; /* Firefox */
+}
+
+.vehiculos-slider::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+
+.vehiculo-card {
+    min-width: 280px;
+    height: 300px;
+    width: 25rem;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vehiculo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.vehiculo-card .info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: left;
+}
+
+.vehiculo-card .info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.vehiculo-card .info p {
+    margin: 0.3rem 0 0;
+    font-size: 0.9rem;
+}
+
+.arrow {
+    background: #000;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.7;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.arrow:hover {
+    opacity: 1;
+}
+
+.arrow.left {
+    left: -1rem;
+}
+
+.arrow.right {
+    right: -1rem;
 }
