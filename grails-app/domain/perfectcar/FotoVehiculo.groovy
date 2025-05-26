@@ -18,7 +18,8 @@ class FotoVehiculo {
     }
 
     static constraints = {
-        url(url: true, blank: false, nullable: false, attributes: [title: 'URL de la Foto'])
+        url(blank: false, nullable: false)  // quita url:true
+        //url(url: true, blank: false, nullable: false, attributes: [title: 'URL de la Foto'])
     }
 
     String toString() {

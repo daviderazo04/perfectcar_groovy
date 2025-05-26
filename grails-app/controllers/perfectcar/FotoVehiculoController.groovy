@@ -19,7 +19,7 @@ class FotoVehiculoController {
     }
 
     def create() {
-        respond new FotoVehiculo(params)
+        respond new FotoVehiculo(params), model: [vehiculos: Vehiculo.list()]
     }
 
     def save(FotoVehiculo fotoVehiculo) {

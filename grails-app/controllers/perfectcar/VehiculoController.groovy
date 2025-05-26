@@ -2,6 +2,7 @@ package perfectcar
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+import perfectcar.FotoVehiculoController
 
 class VehiculoController {
 
@@ -28,10 +29,18 @@ class VehiculoController {
             return
         }
 
+        // Carga las fotos manualmente si vienen en los params
+        if (params.fotos) {
+            params.fotos.each { index, fotoParams ->
+                def foto = new FotoVehiculo(url: fotoParams.url)
+                vehiculo.addToFotos(foto)
+            }
+        }
+
         try {
             vehiculoService.save(vehiculo)
         } catch (ValidationException e) {
-            respond vehiculo.errors, view:'create'
+            respond vehiculo.errors, view: 'create'
             return
         }
 
@@ -42,6 +51,20 @@ class VehiculoController {
             }
             '*' { respond vehiculo, [status: CREATED] }
         }
+    }
+
+
+    def get(Long id) {
+        Vehiculo.get(id)
+    }
+
+    /*
+    def list(Map args) {
+        Vehiculo.list(args)
+    }*/
+
+    def count() {
+        Vehiculo.count()
     }
 
     def edit(Long id) {

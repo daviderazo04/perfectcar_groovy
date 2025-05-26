@@ -1,5 +1,8 @@
 package perfectcar
 
+import grails.validation.ValidationException
+import static org.springframework.http.HttpStatus.*
+
 class PersonaController {
 
     def lista() {
@@ -15,7 +18,6 @@ class PersonaController {
     }
     def guardar() {
         println("Guardar: $params")
-
         def persona
 
         if (params.id) {
@@ -23,15 +25,26 @@ class PersonaController {
             persona = Persona.get(params.id)
             if (persona) {
                 persona.properties = params
-                persona.save(flush: true)
+                if (persona.save(flush: true)) {
+                    flash.message = "Persona actualizada correctamente."
+                } else {
+                    flash.message = "Error al actualizar la persona."
+                    return render(view: "forma", model: [persona: persona])
+                }
             }
         } else {
             println "Crea persona"
             persona = new Persona(params)
-            persona.save()
+            if (persona.save(flush: true)) {
+                flash.message = "Persona creada correctamente."
+            } else {
+                flash.message = "Error al guardar la persona."
+                return render(view: "forma", model: [persona: persona])
+            }
         }
 
         redirect(action: "lista")
     }
+
 
 }

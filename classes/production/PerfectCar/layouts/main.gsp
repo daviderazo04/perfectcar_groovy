@@ -29,10 +29,13 @@
         <div class="lista-nav">
             <ul>
                 <li><a href="../#">Inicio</a></li>
-                <li><g:link controller="vehiculo" action="index" >Vehículos</g:link></li>
-                <li><g:link controller="persona" action="lista" >Usuarios</g:link></li>
+                <li><a href="../#">Vehículos</a></li>
             </ul>
 
+            <ul class="der">
+                <li><a href="#">Iniciar Sesión</a></li>
+                <li><a href="#">Registrarse</a></li>
+            </ul>
         </div>
     </nav>
 
